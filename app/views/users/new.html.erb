@@ -1,0 +1,22 @@
+<div class="main users-new">
+  <div class="container">
+    <div class="form-heading">新規ユーザー登録</div>
+    
+    <%= form_with model: @user, local: true do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
+      <div class="form users-form">
+        <div class="form-body">
+          <%= f.label :name, 'お名前' %>
+          <%= f.text_field :name, placeholder: "山田 太郎" %>
+          
+          <%= f.label :email, 'メールアドレス' %>
+          <%= f.text_field :email, placeholder: 'taro_yamada@tsukutte.com' %>
+          
+          <%= f.submit "新規登録"%>
+        </div>
+      </div>
+    <% end %>
+    
+    
+  </div>
+</div>

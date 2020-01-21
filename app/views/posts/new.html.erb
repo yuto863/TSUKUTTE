@@ -1,0 +1,14 @@
+<div class="main posts-new">
+  <div class="container">
+    <h1 class="form-heading">投稿する</h1>
+    <%= form_with model: @post, local: true do |f| %>
+    
+      <div class="form">
+        <div class="form-body">
+          <%= f.text_area :content %>
+          <%= f.submit "投稿"%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
