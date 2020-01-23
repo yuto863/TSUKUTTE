@@ -12,6 +12,12 @@
           <%= f.label :email, 'メールアドレス' %>
           <%= f.text_field :email, placeholder: 'taro_yamada@tsukutte.com' %>
           
+          <%= f.label :password, 'パスワード' %>
+          <%= f.text_field :password, placeholder: '6文字以上で入力して'%>
+          
+          <%= f.label :password_confirmation, 'パスワード(確認)' %>
+          <%= f.text_field :password_confirmation, placeholder: '確認用' %>
+          
           <%= f.submit "新規登録"%>
         </div>
       </div>

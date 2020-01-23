@@ -1,0 +1,17 @@
+<div class="main users-new">
+  <div class="container">
+    <div class="form-heading">ログイン</div>
+    <%= form_with scope: :session, url:login_path, local: true do |f| %>
+      <div class="form users-form">
+        <div class="form-body">
+          <%= f.label :email, 'メールアドレス' %>
+          <%= f.text_field :email, placeholder: 'taro_yamada@tsukutte.com' %>
+          <%= f.label :password, 'パスワード' %>
+          <%= f.password_field :password , placeholder: '6文字以上'%>
+          
+          <%= f.submit 'ログイン' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

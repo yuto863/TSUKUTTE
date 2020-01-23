@@ -1,0 +1,40 @@
+<header>
+  <div class="header-logo">
+    <%= link_to "TSUKUTTE", root_path %>
+  </div>
+  
+<ul class="header-menus">
+  <% if logged_in? %>
+    <li>
+      <%= link_to "投稿一覧", posts_path %>
+    </li>
+    
+    <li>
+      <%= link_to "新規投稿", new_post_path %>
+    </li>
+    
+    <li>
+      <%= link_to "ユーザー一覧", users_path %>
+    </li>
+    
+    <li>
+      <%= link_to 'ログアウト', logout_path,method:"delete" %>
+    </li>
+    
+  <% else %>
+  
+    <li>
+      <%= link_to "TSUKUTTEとは", about_path %>
+    </li>
+    
+    <li>
+      <%= link_to "新規登録", new_user_path %>
+    </li>
+    
+    <li>
+      <%= link_to 'ログイン', login_path %>
+    </li>
+  
+  <% end %>
+</ul>
+</header>

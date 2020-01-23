@@ -2,7 +2,7 @@
   <div class="container">
     <h1 class="form-heading">投稿する</h1>
     <%= form_with model: @post, local: true do |f| %>
-    
+    <%= render 'layouts/error_messages', model: f.object %>
       <div class="form">
         <div class="form-body">
           <%= f.text_area :content %>
