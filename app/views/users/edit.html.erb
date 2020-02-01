@@ -18,8 +18,8 @@
           <%= f.text_field :password_confirmation, placeholder: '確認用' %>
           
           
-            <%= f.submit "編集する"%>
-          
+          <%= f.submit "編集する"%>
+          <%= link_to '削除する',user_path(@user),method: :delete,data: { confirm: '本当に削除しますか？一度削除したら元に戻せません' } %>
         </div>
       </div>
     <% end %>

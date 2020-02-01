@@ -1,10 +1,15 @@
 class PostsController < ApplicationController
+  before_action :ensure_correct_user,{only: [:edit,:update,:destroy]}
+  
+  include ApplicationHelper
+  
   def index
     @posts = Post.all.order(created_at: :desc)
   end
   
   def show
     @post = Post.find_by(id: params[:id])
+    @user = User.find_by(id: @post.user_id)
   end
   
   def new
@@ -12,7 +17,9 @@ class PostsController < ApplicationController
   end
   
   def create
-    @post = Post.new(content: params[:post][:content])
+    @post = Post.new(content: params[:post][:content],
+            user_id: current_user.id
+            )
     if @post.save
       flash[:notice] = "投稿を作成しました"
       redirect_to posts_path
@@ -43,5 +50,14 @@ class PostsController < ApplicationController
     
     redirect_to posts_path
   end
+  
+  private
+    def ensure_correct_user
+      @post = Post.find_by(id: params[:id])
+      if @post.user_id != current_user.id
+        flash[:notice] = '権限がありません'
+        redirect_to posts_path
+      end
+    end
   
 end
