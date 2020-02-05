@@ -5,6 +5,9 @@
     <%= render 'layouts/error_messages', model: f.object %>
       <div class="form">
         <div class="form-body">
+          <%= f.label :title, 'タイトル' %>
+          <%= f.text_field :title %>
+          <%= f.label :content,'内容' %>
           <%= f.text_area :content %>
           <%= f.submit value: "投稿"%>
         </div>
@@ -13,3 +16,4 @@
     
   </div>
 </div>
+

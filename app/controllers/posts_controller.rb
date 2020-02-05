@@ -3,13 +3,18 @@ class PostsController < ApplicationController
   
   include ApplicationHelper
   
+
+
+  
   def index
     @posts = Post.all.order(created_at: :desc)
+    @posts = Post.search(params[:search])
   end
   
   def show
     @post = Post.find_by(id: params[:id])
     @user = User.find_by(id: @post.user_id)
+    @comment = Comment.new
   end
   
   def new
@@ -18,7 +23,8 @@ class PostsController < ApplicationController
   
   def create
     @post = Post.new(content: params[:post][:content],
-            user_id: current_user.id
+                     title: params[:post][:title],
+                     user_id: current_user.id
             )
     if @post.save
       flash[:notice] = "投稿を作成しました"

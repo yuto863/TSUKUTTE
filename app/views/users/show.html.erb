@@ -6,6 +6,9 @@
 
       <p><%= @user.email %></p>
       
+      【紹介文】 
+      <p><%= @user.profile%></p>
+      
       <% if @user.id == current_user.id %>
         <%=link_to '編集',edit_user_path %>
       <% end %>

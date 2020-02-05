@@ -1,7 +1,7 @@
 <div class="main posts-show">
   <div class="container">
     <div class="posts-show-item">
-      <%= link_to @user.name,user_path %>
+      <%= link_to @user.name,user_path(@user) %>
       <p>
         <%= @post.title %>
         <%= @post.content %>
@@ -29,5 +29,27 @@
       
       
     </div>
+    <div>
+      <h3>コメント一覧</h3>
+      <% if @post.comments.any? %>
+        <% @post.comments.each do |comment| %>
+            <%= link_to comment.user.name,user_path(comment.user) %>
+            <%= comment.content%>
+        <% end %>
+      <% else%>
+        <p>まだコメントがありません</p>
+      <% end %>
+      
+    </div>
+    
+    <h3>コメントする</h3>
+    <%= form_with model: [@post, @comment], local: true do |f| %>
+      <%= f.hidden_field :post_id, {value: @post.id } %>
+      
+      
+      <%= f.label :content, '内容' %>
+      <%= f.text_area :content %>
+      <%= f.submit '投稿' %>
+    <% end %>
   </div>
 </div>
