@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # get 'posts/index'
   root 'home#top'
   
-
+  get 'users/:id/likes', to: 'users#likes'
   
   
   get    'login', to: 'sessions#new'

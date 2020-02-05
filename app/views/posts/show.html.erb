@@ -17,7 +17,9 @@
         <%= @post.created_at%>
       </div>
     
-      
+      <% unless  @post.updated_at == @post.created_at %>
+        <p>編集済です</p>
+      <% end %>
       
       
       <% if @post.user_id == current_user.id %>

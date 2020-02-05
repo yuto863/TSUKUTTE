@@ -33,10 +33,16 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     if @user.update(user_params)
       flash[:notice] = "ユーザーの編集が完了しました"
-      redirect_to users_path
+      redirect_to user_path
     else
       render :edit
     end
+  end
+  
+  def likes
+    @user = User.find_by(id: params[:id])
+    @likes = Like.where(user_id: @user.id).order(updated_at: :desc)
+    
   end
   
   def destroy
@@ -48,7 +54,7 @@ class UsersController < ApplicationController
   
   private
     def user_params
-      params.require(:user).permit(:name, :email,:password,:password_confirmation)
+      params.require(:user).permit(:name, :email,:profile,:password,:password_confirmation)
     end
     
     def logged_in_user

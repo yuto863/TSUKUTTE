@@ -9,12 +9,10 @@
     <li>
       <%= form_with(url: posts_path, method: :get, local: true) do |f| %>
         <%= f.text_field :search %>
-        <%= f.submit '検索' %>
+        <%= f.submit '投稿検索' %>
       <% end %>
     </li>
-    <li>
-      <%= link_to "投稿一覧", posts_path %>
-    </li>
+    
     
     <li>
       <%= link_to "新規投稿", new_post_path %>
