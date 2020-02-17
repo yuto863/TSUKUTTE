@@ -6,17 +6,31 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   </head>
 
   <body>
     <%= render 'layouts/header' %>
+    
+    
     
     <% if flash[:notice] %>
       <div class="flash">
         <%= flash[:notice] %>
       </div>
     <% end %>
+    
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
+    <% end %>
     <%= yield %>
+    
+    <script>
+      $(function(){
+        $(".alert").fadeOut(3000);
+      });
+    </script>
   </body>
 </html>
 

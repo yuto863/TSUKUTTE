@@ -3,6 +3,15 @@
     <% @posts.each do |post| %>
       <div class="posts-index-item">
         <%= link_to post.title,post_path(post)%>
+        
+        いいね数
+        <%= Like.where(post_id: post.id).count %>
+      
+        <div class="post-time">
+          投稿日時　<%= shape_create_time(post.created_at) %>
+          
+        </div>
+      
       </div>
     <% end %>
   </div>

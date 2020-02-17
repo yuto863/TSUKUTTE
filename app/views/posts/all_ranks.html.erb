@@ -1,0 +1,19 @@
+<div class="main posts-index">
+  <%= render 'layouts/index_header' %>
+  <div class="container">
+      <h1 class="form-heading">全てのいいね数</h1>
+      <% @all_ranks.first(10).each do |post| %>
+        <div class="posts-index-item">
+          
+          <%= link_to post.title,post_path(post)%>
+          
+          いいね数
+          <%= Like.where(post_id: post.id).count %>
+          
+          <div class="post-time">
+            投稿日時　<%= shape_create_time(post.created_at) %>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div>

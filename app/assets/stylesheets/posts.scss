@@ -4,6 +4,7 @@
   background-color: white;
   overflow: hidden;
   box-shadow: 0 2px 6px #c1ced7;
+  margin-top: 15px;
 }
 
 .post-left img {
@@ -69,6 +70,18 @@
 .post-time {
   color: #8899a6;
   margin-bottom: 10px;
+}
+
+.post-detail {
+  color: #8899a6;
+  margin-bottom: 10px;
+}
+
+.post-comment {
+  color: #8899a6;
+}
+.post-updated {
+  color: #999999;
 }
 
 .post-menus {

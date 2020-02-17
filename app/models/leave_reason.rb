@@ -1,0 +1,2 @@
+class LeaveReason < ApplicationRecord
+end

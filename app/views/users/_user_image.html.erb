@@ -1,0 +1,8 @@
+<!--あとで書き直す-->
+<% if not @user %>
+  <%= image_tag "default.jpg", :size => '100x100' %>
+<% elsif @user.image? %>
+  <%= image_tag @user.image.url %>
+<% elsif not @user.image? %>
+  <%= image_tag "default.jpg", :size => '100x100' %>
+<% end %>

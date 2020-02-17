@@ -1,0 +1,15 @@
+<!--投稿詳細のテンプレート（名前、投稿日時、ハートマーク）-->
+<div class="post-detail">
+    <% if post.user%>
+      by <%= post.user.name%>
+    <% else %>
+      退会したユーザー
+    <% end %>
+    
+    
+    投稿日時 <%= shape_create_time(post.created_at) %>
+    <i class="material-icons">
+      favorite
+    </i>
+    <%= Like.where(post_id: post.id).count %>
+</div>

@@ -1,10 +1,22 @@
 class User < ApplicationRecord
+  mount_uploader :image, ImageUploader
+  
   attr_accessor :remember_token
 
-  validates :name, presence: true,uniqueness: true
-  validates :email,presence: true,uniqueness: true
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   
-  validates :password, presence: true, length: { minimum: 6 },allow_nil: true
+  # usernameにしたい
+  # def to_param
+  #   name
+  # end
+  
+
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i
+  
+  validates :name, presence: true,uniqueness: true
+  
+  validates :password, presence: true,format: { with: VALID_PASSWORD_REGEX },allow_nil: true
   
   has_many :posts
   has_many :comments

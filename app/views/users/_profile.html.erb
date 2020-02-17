@@ -1,0 +1,21 @@
+      
+      <%= render partial: "/users/user_image"%>
+      
+      <h2><%= @user.name %></h2>
+      <br>
+      【紹介文】
+      <!--エスケープ処理でhttp,httpを許可している-->
+      <% if @user.profile %>
+        <p><%= sanitize text_url_to_link(@user.profile), tags: %w(b a), attributes: %w(href) %></p>
+      <% end %>
+      
+      <% if @user.id == current_user.id %>
+        <%=link_to '編集',edit_user_path %>
+      <% end %>
+      
+      
+      <div>
+        <%= link_to "投稿履歴",user_path %>
+        <%= link_to "いいね履歴","/users/#{@user.id}/likes" %>
+        <%= link_to "コメント履歴","/users/#{@user.id}/comments" %>
+      </div>

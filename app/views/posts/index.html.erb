@@ -1,24 +1,23 @@
 <div class="main posts-index">
+  
+    
+  
+    
+    
   <div class="container">
-    <% @posts.each do |post| %>
+    
+    <i class="material-icons">
+     trending_up
+    </i>
+    トレンド
+    <%= render 'layouts/index_header' %>
+    
+    <h1 class="form-heading">最新の投稿</h1>
+    <% @posts.first(10).each do |post| %>
       <div class="posts-index-item">
         <%= link_to post.title,post_path(post)%>
-        
-      <% if Like.find_by(user_id: current_user.id,post_id: post.id) %>
-        <%= link_to 'いいね済',"/likes/#{post.id}/destroy",method: :post %>
-      <% else %>
-        <%= link_to 'いいね',"/likes/#{post.id}/create",method: :post %>
-      <% end %>
-      
-      <%= Like.where(post_id: post.id).count %>
-      
+        <%= render 'layouts/post_detail', { post: post } %>
       </div>
-      
-      
-      
     <% end %>
-    
-    
-    
   </div>
 </div>

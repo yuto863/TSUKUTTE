@@ -1,0 +1,10 @@
+<% if Like.find_by(user_id: current_user.id, post_id: post.id) %>
+  <%= link_to "/likes/#{post.id}/destroy",method: :post, remote: true do%>
+    <i class="material-icons">favorite</i>
+  <% end %>
+<% else %>
+  <%= link_to "/likes/#{post.id}/create",method: :post, remote: true do %>
+    <i class="material-icons">favorite_border</i>
+  <% end %>
+<% end %>
+<%= post.likes.length %>

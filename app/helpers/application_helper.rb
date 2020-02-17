@@ -1,4 +1,23 @@
 module ApplicationHelper
+  require "uri"
+
+  def shape_create_time(created_at)
+    if Post.where('created_at > ?', 1.year.ago)
+      created_at.strftime("%m月%d日 %H:%M")
+    else
+      created_at.strftime("%Y年%m月%d日 %H:%M")
+    end
+  end
+  
+  # created_at.strftime("%Y年%m月%d日 %H:%M:%S")
+  
+  def text_url_to_link(text)
+    URI.extract(text, ["http", "https"]).uniq.each do |url|
+      text.gsub!(url, "<a href=\"#{url}\"target=\"_blank\">#{url}<\/a>")
+    end
+    text
+  end
+  
   def current_user
     if (user_id = session[:user_id])
       @current_user ||= User.find_by(id: user_id)
@@ -64,5 +83,9 @@ module ApplicationHelper
   def store_location
     session[:forwarding_url] = request.original_url
   end
+  
+  
+ 
+  
   
 end

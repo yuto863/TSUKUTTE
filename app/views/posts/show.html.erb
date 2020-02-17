@@ -1,42 +1,79 @@
 <div class="main posts-show">
   <div class="container">
     <div class="posts-show-item">
-      <%= link_to @user.name,user_path(@user) %>
-      <p>
-        <%= @post.title %>
-        <%= @post.content %>
-      </p>
-      <% if Like.find_by(user_id: current_user.id,post_id: @post.id) %>
-        <%= link_to 'いいね済',"/likes/#{@post.id}/destroy",method: :post %>
-      <% else %>
-        <%= link_to 'いいね',"/likes/#{@post.id}/create",method: :post %>
+      
+      <!--書き直す-->
+      <% if not @user %>
+        <%= image_tag "default.jpg", :size => '100x100' %>
+      <% elsif @user.image? %>
+        <%= image_tag @user.image.url %>
+      <% elsif not @user.image? %>
+        <%= image_tag "default.jpg", :size => '100x100' %>
       <% end %>
-      <%= Like.where(post_id: @post.id).count %>
+
+      
+      <% if @user %>
+        <%= link_to @user.name,user_path(@user) %>
+      <% else %>
+        （既に退会したユーザー）
+      <% end %>
       
       <div class="post-time">
-        <%= @post.created_at%>
+          <%= shape_create_time(@post.created_at)%>に更新
       </div>
-    
-      <% unless  @post.updated_at == @post.created_at %>
-        <p>編集済です</p>
-      <% end %>
+      
+      
+      
+      <font size="5">
+        <%= @post.title %>
+      </font>
+        <br>
+        <br>
+        
+      <font size="3">
+        <%= sanitize text_url_to_link(@post.content), tags: %w(b a), attributes: %w(href) %>
+      </font>
+      
+      <br>
+      <br>
+      <td id="like-<%= @post.id %>">
+        <%= render partial: "like", locals: { post: @post } %>
+      </td>
+      
       
       
       <% if @post.user_id == current_user.id %>
         <div class="post-menus">
           <%= link_to "編集",edit_post_path %>
-          <%= link_to "削除",post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+          <%= link_to "削除",post_path(@post), method: :delete, data: { confirm: '本当に削除してもよろしいですか？', cancel: 'キャンセル', commit: '削除する'}, title: '削除確認' %>
         </div>
+      <% end %>
+      
+      <% unless  @post.updated_at == @post.created_at %>
+        <div class="post-comment">（編集済みです）</div>
       <% end %>
       
       
     </div>
     <div>
       <h3>コメント一覧</h3>
+      <p><%= @post.comments.count %>件のコメント</p>
+      <br>
       <% if @post.comments.any? %>
+      
         <% @post.comments.each do |comment| %>
+          <% if comment.user %>
             <%= link_to comment.user.name,user_path(comment.user) %>
-            <%= comment.content%>
+          <% else %>
+            （既に退会したユーザー）
+          <% end %>
+            
+          <%= sanitize text_url_to_link(comment.content), tags: %w(b a), attributes: %w(href) %>
+          
+          <div class="post-comment">
+            <%= shape_create_time(comment.created_at) %>
+          </div>
+          <br>
         <% end %>
       <% else%>
         <p>まだコメントがありません</p>
@@ -45,13 +82,18 @@
     </div>
     
     <h3>コメントする</h3>
+    
+
+    
     <%= form_with model: [@post, @comment], local: true do |f| %>
       <%= f.hidden_field :post_id, {value: @post.id } %>
       
       
-      <%= f.label :content, '内容' %>
+      
       <%= f.text_area :content %>
       <%= f.submit '投稿' %>
     <% end %>
+    
+
   </div>
 </div>

@@ -4,6 +4,20 @@
     <%= form_with model: @user, local: true do |f| %>
     <%= render 'layouts/error_messages', model: f.object %>
       <div class="form users-form">
+        <center>
+        <% if @user.image? %>
+          <%= image_tag @user.image.url %>
+        <% else %>
+          <%= image_tag "/assets/default.jpg", :size => '100x100' %>
+        <% end %>
+        
+        <br>
+        <br>
+        <button type="button">
+           <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
+        </button>
+        </center>
+        
         <div class="form-body">
           <%= f.label :name, 'ユーザー名' %>
           <%= f.text_field :name %>
@@ -13,9 +27,11 @@
           
           
           
+        　
+          
           
           <%= f.submit "編集する"%>
-          <%= link_to '削除する',user_path(@user),method: :delete,data: { confirm: '本当に削除しますか？一度削除したら元に戻せません' } %>
+          
         </div>
       </div>
     <% end %>

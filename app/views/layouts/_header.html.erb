@@ -7,30 +7,34 @@
   <% if logged_in? %>
   
     <li>
-      <%= form_with(url: posts_path, method: :get, local: true) do |f| %>
-        <%= f.text_field :search %>
+      <%= form_with(url: posts_search_path, method: :get, local: true,class: "search_container") do |f| %>
+        <%= f.text_field :search, placeholder: 'キーワード検索'  %>
         <%= f.submit '投稿検索' %>
       <% end %>
     </li>
-    
     
     <li>
       <%= link_to "新規投稿", new_post_path %>
     </li>
     
-    <li>
-      <%= link_to "ユーザー一覧", users_path %>
-    </li>
+
     
     <li>
-      <%= link_to 'ログアウト', logout_path,method: :delete , data: { confirm: 'ログアウトしてよろしいですか？' } %>
+      <%= link_to 'ログアウト', logout_path,method: :delete , data: { confirm: 'ログアウトしてもよろしいですか？', cancel: 'キャンセル', commit: 'OK'}, title: 'ログアウト確認' %>
     </li>
-    
+    <li>
+      <i class="material-icons">
+        format_list_bulleted
+      </i>
+    </li>
+
+
   <% else %>
   
     <li>
       <%= link_to "TSUKUTTEとは", about_path %>
     </li>
+
     
     <li>
       <%= link_to "新規登録", new_user_path %>
@@ -39,7 +43,7 @@
     <li>
       <%= link_to 'ログイン', login_path %>
     </li>
-  
+    
   <% end %>
 </ul>
 </header>
