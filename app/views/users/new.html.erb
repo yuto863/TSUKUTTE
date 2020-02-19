@@ -13,10 +13,10 @@
           <%= f.text_field :email %>
           
           <%= f.label :password, 'パスワード' %>
-          <%= f.password_field :password, placeholder: '6文字以上12文字以内' %>
+          <%= f.password_field :password, placeholder: '8文字以上12文字以内(半角英数字それぞれ１文字以上含む)' %>
           
           <%= f.label :password_confirmation, 'パスワード(確認)' %>
-          <%= f.password_field :password_confirmation, placeholder:'6文字以上12文字以内' %>
+          <%= f.password_field :password_confirmation %>
           
           
           <%= link_to 'ログインはこちら',login_path %>

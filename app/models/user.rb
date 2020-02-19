@@ -12,7 +12,7 @@ class User < ApplicationRecord
   # end
   
 
-  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,12}+\z/i
   
   validates :name, presence: true,uniqueness: true
   
