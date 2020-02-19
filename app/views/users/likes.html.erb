@@ -9,16 +9,8 @@
       
       <div class="posts-index-item">
         
-        <div class="post-right">
-          <div class="post-user-name">
-            <% if post.user %>
-              <%= link_to(post.user.name, "/users/#{post.user.id}") %>
-            <% else %>
-              (退会したユーザー)
-            <% end %>
-          </div>
-          <%= link_to(post.title, "/posts/#{post.id}") %>
-        </div>
+        <%= render 'layouts/post_detail', { post: post } %>
+        
       </div>
     <% end %>
 

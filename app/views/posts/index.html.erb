@@ -1,23 +1,18 @@
 <div class="main posts-index">
+  <%= render 'layouts/top_container' %>
   
-    
   
-    
-    
   <div class="container">
     
-    <i class="material-icons">
-     trending_up
-    </i>
-    トレンド
-    <%= render 'layouts/index_header' %>
     
-    <h1 class="form-heading">最新の投稿</h1>
+
+    
+    <!--<h1 class="form-heading">最新の投稿</h1>-->
     <% @posts.first(10).each do |post| %>
       <div class="posts-index-item">
-        <%= link_to post.title,post_path(post)%>
         <%= render 'layouts/post_detail', { post: post } %>
       </div>
+      
     <% end %>
   </div>
 </div>

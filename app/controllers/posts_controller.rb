@@ -73,8 +73,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.content = params[:post][:content]
     if @post.save
-      flash[:notice] = "投稿を編集しました"
-      redirect_to posts_path
+      # flash[:notice] = "投稿を編集しました"
+      redirect_to posts_path,success: '投稿を編集しました'
     else
       render :edit
     end
@@ -85,8 +85,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     
-    flash[:notice] = '削除されました'
-    redirect_to posts_path
+    # flash[:notice] = '削除されました'
+    redirect_to posts_path,success: '削除されました'
   end
   
   def search

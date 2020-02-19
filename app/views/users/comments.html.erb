@@ -2,27 +2,26 @@
   <div class="container">
     <div class="user">
       <%= render partial: "profile"%>
+      
     <% @comments.each do |comment| %>
       <% post = Post.find(comment.post_id) %>
+
       
       <div class="posts-index-item">
+        <div class="post-detail">
         
-        <div class="post-right">
-          <div class="post-user-name">
-            
-            <% if post.user %>
-              <%= link_to(post.user.name, "/users/#{post.user.id}") %>
-            <% else %>
-              (退会したユーザー)
-            <% end %>
-            
-          </div>
-          <%= link_to(post.title, "/posts/#{post.id}") %>
-        </div>
+        <% if post.user%>
+            <%= post.user.name%>
+          <% else %>
+            退会したユーザー
+        <% end %>
         
-        <div class="post-right">
-          <%= comment.content %>
+        の投稿 <%= post.title%>にコメント
+        <%= shape_create_time(comment.created_at) %>
         </div>
+        <br>
+        <%= comment.content%>
+        
       </div>
     <% end %>
       

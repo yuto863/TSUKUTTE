@@ -1,6 +1,7 @@
 module ApplicationHelper
   require "uri"
 
+  # 1年前の投稿にのみ西暦を表示させる
   def shape_create_time(created_at)
     if Post.where('created_at > ?', 1.year.ago)
       created_at.strftime("%m月%d日 %H:%M")

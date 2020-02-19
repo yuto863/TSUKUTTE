@@ -4,8 +4,11 @@
   </div>
   
 <ul class="header-menus">
+  
+  
   <% if logged_in? %>
   
+    
     <li>
       <%= form_with(url: posts_search_path, method: :get, local: true,class: "search_container") do |f| %>
         <%= f.text_field :search, placeholder: 'キーワード検索'  %>
@@ -13,29 +16,42 @@
       <% end %>
     </li>
     
+
+      
+      
+      <!--<div id="wrap">-->
+      <!--  <form action="" autocomplete="on">-->
+      <!--  <input id="search" name="search" type="text" placeholder="検索！">
+            <input id="search_submit" value="Rechercher" type="submit">-->
+      <!--  </form>-->
+      <!--</div>-->
+      
+    
     <li>
       <%= link_to "新規投稿", new_post_path %>
     </li>
     
+    <li class="nav-item dropdown">
+          
+          <!--<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+          <!--    <i class="material-icons">-->
+          <!--      reorder-->
+          <!--    </i>-->
+          <!--</a>-->
 
-    
-    <li>
-      <%= link_to 'ログアウト', logout_path,method: :delete , data: { confirm: 'ログアウトしてもよろしいですか？', cancel: 'キャンセル', commit: 'OK'}, title: 'ログアウト確認' %>
-    </li>
-    <li>
-      <i class="material-icons">
-        format_list_bulleted
-      </i>
-    </li>
-
+          <%= link_to "#" ,class: "nav-link dropdown-toggle" ,id:"navbarDropdownMenuLink",  role: "button",'data-toggle': :dropdown, "aria-haspopup": "true","aria-expanded": "false" do %>　　
+            <i class="material-icons">reorder</i>
+          <% end %>
+          
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <%= link_to "マイページ", "/users/#{current_user.id}" ,class:"dropdown-item"%>
+            <%= link_to "編集", "/users/#{current_user.id}/edit" ,class: "dropdown-item"%>
+            <%= link_to 'ログアウト', logout_path,method: :delete , data: { confirm: 'ログアウトしてよろしいですか？', cancel: 'キャンセル', commit: 'ログアウトする'}, title: 'ログアウト確認' ,class: "dropdown-item" %>
+          </div>
+          
+    </li>            
 
   <% else %>
-  
-    <li>
-      <%= link_to "TSUKUTTEとは", about_path %>
-    </li>
-
-    
     <li>
       <%= link_to "新規登録", new_user_path %>
     </li>

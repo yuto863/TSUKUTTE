@@ -37,6 +37,6 @@ Rails.application.routes.draw do
   post 'likes/:post_id/destroy',to: 'likes#destroy'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get 'about', to: 'home#about'
+  # get 'about', to: 'home#about'
   
 end

@@ -1,18 +1,22 @@
 <div class="main posts-index">
-  <%= render 'layouts/index_header' %>
-  <div class="container">
-    <h1 class="form-heading">今日のトレンド</h1>
+  
+  <%= render 'layouts/top_container' %>
+  
+    <div class="container">
+    <%= render 'layouts/trend_header' %>
+    
+    <!--<h1 class="form-heading">今日のトレンド</h1>-->
       <% @posts_trend_day.first(10).each do |post| %>
         <div class="posts-index-item">
+            
+          <%= render 'layouts/post_detail', { post: post } %>
           
-          <%= link_to post.title,post_path(post)%>
-          いいね数
-          <%= Like.where(post_id: post.id).count %>
-          
-          <div class="post-time">
-            投稿日時　<%= shape_create_time(post.created_at) %>
-          </div>
         </div>
       <% end %>
-  </div>
+    </div>
+  
+  
+  
 </div>
+
+

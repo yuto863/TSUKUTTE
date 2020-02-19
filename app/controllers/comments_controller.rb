@@ -12,8 +12,8 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     
     if @comment.save
-      flash[:notice] = '投稿が完了しました'
-      redirect_to post_path(@comment.post.id)
+      # flash[:notice] = '投稿が完了しました'
+      redirect_to post_path(@comment.post.id),success: '投稿が完了しました'
     else
       flash[:notice] = '投稿に失敗しました'
       redirect_to post_path(@comment.post.id)

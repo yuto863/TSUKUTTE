@@ -1,0 +1,25 @@
+<div class="top-container">
+    <ul>
+    	<li class="<%= 'index-header-selecting' if current_page?(posts_daily_path) or current_page?(posts_weekly_path) or current_page?(posts_monthly_path)%>">
+    	  <%= link_to  posts_daily_path do %>
+          <i class="material-icons">trending_up</i> トレンド
+        <% end %>
+    	</li>
+
+    	
+    	
+    	<li class="<%= 'index-header-selecting' if current_page?(posts_path) %>">
+    	  <%= link_to  posts_path do %>
+              <i class="material-icons">fiber_new</i> 最新の投稿
+          <% end %>
+    	</li>
+    	
+    	<li class="<%= 'index-header-selecting' if current_page?(posts_all_ranks_path) %>">
+    	  <%= link_to  posts_all_ranks_path do %>
+          <i class="material-icons">import_export</i> 過去のいいねランク
+        <% end %>
+    	</li>
+    	
+
+    </ul>
+</div>

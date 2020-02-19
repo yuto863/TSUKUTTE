@@ -35,10 +35,19 @@ form input[type="submit"] {
   cursor: pointer;
 }
 
-/* 共通レイアウト ================================ */
+// 共通の部分
+
+// ここ
 body {
+  // color:#ADD8E6;
   color: #2d3133;
-  background-color: #3ecdc6;
+  // background-color: #3ecdc6;
+  // background-color: #0066CC;
+  // background-color:#006400	;
+  
+  // background-color:#6FB98F;
+  background-color:#94AFC5;
+  
   margin: 0;
   min-height: 1vh;
 }
@@ -123,7 +132,12 @@ header {
   height: auto;
   min-height: 100%;
   color: white;
-  background-color: #3ecdc6;
+  // background-color: #3ecdc6;
+  // background-color: #0066CC;
+  // background-color:#2C7873;
+  // background-color:#ADD8E6;
+  // background-color:#6FB98F;
+  background-color:#94AFC5;
   background-repeat: no-repeat;
   background-position: center 50%;
   background-size: cover;
@@ -208,7 +222,8 @@ header {
 }
 
 .form input[type="submit"] {
-  background-color: #3ecdc6;
+  // background-color: #3ecdc6;
+  background-color:#ADD8E6;
   color: white;
   cursor: pointer;
   font-weight: 300;
@@ -219,11 +234,15 @@ header {
   float: right;
 }
 
+
+
 .form-body:after {
   content: '';
   display: table;
   clear: both;
+  
 }
+
 
 /* フラッシュ ================================ */
 .flash {

@@ -2,17 +2,10 @@
   <div class="container">
     <% @posts.each do |post| %>
       <div class="posts-index-item">
-        <%= link_to post.title,post_path(post)%>
-        
-        いいね数
-        <%= Like.where(post_id: post.id).count %>
-      
-        <div class="post-time">
-          投稿日時　<%= shape_create_time(post.created_at) %>
-          
-        </div>
-      
+        <%= render 'layouts/post_detail', { post: post } %>
       </div>
     <% end %>
   </div>
 </div>
+
+<!--if文で検索結果が見つかった場合とそうでない場合で分岐させる-->

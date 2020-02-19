@@ -1,7 +1,10 @@
 <!--投稿詳細のテンプレート（名前、投稿日時、ハートマーク）-->
-<div class="post-detail">
+  <%= link_to post.title,post_path(post)%>
+  
+  <div class="post-detail">
+  
     <% if post.user%>
-      by <%= post.user.name%>
+    by <%=  link_to "#{post.user.name}",user_path(post), class: "post-detail" %>
     <% else %>
       退会したユーザー
     <% end %>
@@ -12,4 +15,4 @@
       favorite
     </i>
     <%= Like.where(post_id: post.id).count %>
-</div>
+  </div>

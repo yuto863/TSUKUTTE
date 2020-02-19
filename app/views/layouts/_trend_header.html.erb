@@ -1,0 +1,17 @@
+<i class="material-icons">
+     trending_up
+</i>
+トレンド
+    
+    
+<!--if文で色が変わるように条件分岐-->
+<ul class="index-header-menus">
+  
+    <li class="<%= 'index-header-selecting' if current_page?(posts_daily_path) %>"><%= link_to '１日', posts_daily_path %></li>
+
+    <li class="<%= 'index-header-selecting' if current_page?(posts_weekly_path) %>"><%= link_to '週間', posts_weekly_path %></li>
+    
+    <li class="<%= 'index-header-selecting' if current_page?(posts_monthly_path) %>"><%= link_to '月間', posts_monthly_path %></li>
+    
+</ul>
+

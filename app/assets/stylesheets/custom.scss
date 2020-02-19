@@ -4,3 +4,101 @@
   width: 100%;
   z-index: 10000;
 }
+
+.index-header-menus li{
+  display: inline-block;
+  font-size: 200%;
+  width: 40px;
+}
+
+
+
+.top-container{
+  ul {
+  	width: 200px;
+  	margin: 0;
+  	padding: 0;
+  	list-style-type: none;
+  	background-color: #eeeeee;
+  }
+  li a {
+  	display: block;
+  	padding: 8px 16px;
+  	text-decoration: none;
+  	color: #000000;
+  }
+  li {
+  	text-align: center;
+  }
+  li:last-child {
+  	border-bottom: none;
+  }
+  
+  // チラチラさせる
+  li a:hover {
+  	color: #fff;
+  background-color: #a0a0a0;
+  }
+  
+  // セレクティングしているときの表示
+  li.index-header-selecting > a {
+  color: #fff;
+  background-color: #a0a0a0;
+  }
+  
+}
+
+.top-container{
+  float:left;
+  
+}
+
+
+.container{
+
+}
+
+
+
+
+
+
+
+
+
+// トレンド機能の切り替え（１日、週間、月間）
+.index-header-menus > li.index-header-selecting > a {
+  color: #fff;
+  background-color: #a0a0a0;
+}
+
+
+.index-header-menus > li a:hover {
+  color: #fff;
+  background-color: #a0a0a0;
+}
+
+
+
+
+// ユーザー詳細ページの切り替え（投稿、いいね、コメント履歴）
+.user-menus > li.user-header-selecting > a {
+  color: #fff;
+  background-color: #a0a0a0;
+}
+
+.user-menus > li a:hover {
+  color: #fff;
+  background-color: #a0a0a0;
+}
+
+
+.dropdown-menu {
+  
+  color: #fff;
+  background-color: #a0a0a0;
+  
+}
+
+
+

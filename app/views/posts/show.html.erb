@@ -10,13 +10,13 @@
       <% elsif not @user.image? %>
         <%= image_tag "default.jpg", :size => '100x100' %>
       <% end %>
-
       
       <% if @user %>
         <%= link_to @user.name,user_path(@user) %>
       <% else %>
         （既に退会したユーザー）
       <% end %>
+      
       
       <div class="post-time">
           <%= shape_create_time(@post.created_at)%>に更新
@@ -34,6 +34,10 @@
         <%= sanitize text_url_to_link(@post.content), tags: %w(b a), attributes: %w(href) %>
       </font>
       
+      <% unless  @post.updated_at == @post.created_at %>
+        <div class="post-comment">（編集済みです）</div>
+      <% end %>
+      
       <br>
       <br>
       <td id="like-<%= @post.id %>">
@@ -49,9 +53,7 @@
         </div>
       <% end %>
       
-      <% unless  @post.updated_at == @post.created_at %>
-        <div class="post-comment">（編集済みです）</div>
-      <% end %>
+      
       
       
     </div>
