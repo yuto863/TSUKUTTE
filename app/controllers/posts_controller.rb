@@ -58,8 +58,9 @@ class PostsController < ApplicationController
                           )
     
       # flash[:notice] = "投稿を作成しました"
-      redirect_to posts_path,success: 'ユーザーの編集が完了しました'
+      redirect_to posts_path,success: '投稿を作成しました'
     else
+      flash.now[:danger] = "投稿に失敗しました"
       render :new
     end
     
@@ -72,10 +73,12 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.content = params[:post][:content]
+    @post.title = params[:post][:title]
     if @post.save
       # flash[:notice] = "投稿を編集しました"
       redirect_to posts_path,success: '投稿を編集しました'
     else
+      flash.now[:danger] = "編集に失敗しました"
       render :edit
     end
   end

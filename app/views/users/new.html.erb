@@ -3,7 +3,10 @@
     <div class="form-heading">新規ユーザー登録</div>
     
     <%= form_with model: @user, local: true do |f| %>
-    <%= render 'layouts/error_messages', model: f.object %>
+    
+
+    
+    <%=  render 'layouts/error_messages', model: f.object %>
       <div class="form users-form">
         <div class="form-body">
           <%= f.label :name, 'ユーザー名' %>

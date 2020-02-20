@@ -4,7 +4,7 @@
   <div class="post-detail">
   
     <% if post.user%>
-    by <%=  link_to "#{post.user.name}",user_path(post), class: "post-detail" %>
+    by <%=  link_to "#{post.user.name}",user_path(post.user), class: "post-detail" %>
     <% else %>
       退会したユーザー
     <% end %>

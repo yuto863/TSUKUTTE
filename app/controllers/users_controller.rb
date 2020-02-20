@@ -2,9 +2,9 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only:[:edit,:update]
   before_action :correct_user,   only:[:edit,:update]
   
-  def index
-    @users = User.all.order(created_at: :desc)
-  end
+  # def index
+  #   @users = User.all.order(created_at: :desc)
+  # end
   
   def show
     # usernameにしたい
@@ -21,9 +21,9 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       # flash[:notice] = "ユーザーを作成いたしました"
-      redirect_to root_path, success: '登録が完了しました'
+      redirect_to root_path, success: '登録が完了しました。'
     else
-      flash.now[:danger] = "登録に失敗しました"
+      flash.now[:danger] = "登録に失敗しました。入力した値が正しいかご確認ください。"
       render :new
     end
   end
@@ -75,8 +75,8 @@ class UsersController < ApplicationController
     def logged_in_user
       unless logged_in?
       store_location
-      flash[:notice] = "ログインをしてください"
-      redirect_to login_path
+      # flash[:notice] = "ログインをしてください"
+      redirect_to login_path,success: 'ログインしてください'
       end
     end
     
