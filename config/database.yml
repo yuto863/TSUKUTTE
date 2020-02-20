@@ -24,6 +24,7 @@ production:
   <<: *default
   database: db/production.sqlite3
 
+
 # これheroku用に追加したもの
 production:
 <<: *default
