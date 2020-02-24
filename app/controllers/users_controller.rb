@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   
   def comments
     @user = User.find(params[:id])
-    @comments = Comment.where(user_id: @user.id).group(:post_id).order(updated_at: :desc)
+    @comments = Comment.where(user_id: @user.id).order(updated_at: :desc)
   end
   
   def destroy_confirm
