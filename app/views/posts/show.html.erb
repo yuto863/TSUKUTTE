@@ -17,9 +17,12 @@
         （既に退会したユーザー）
       <% end %>
       
-      
       <div class="post-time">
-          <%= shape_create_time(@post.created_at)%>に更新
+        <% if @post.created_at == @post.updated_at %>
+          <%= shape_create_time(@post.created_at)%>に投稿
+        <% else %>
+          <%= shape_create_time(@post.updated_at)%>に更新
+        <% end %>
       </div>
       
       
@@ -35,7 +38,7 @@
       </font>
       
       <% unless  @post.updated_at == @post.created_at %>
-        <div class="post-comment">（編集済みです）</div>
+        <div class="post-comment">（編集済み）</div>
       <% end %>
       
       <br>

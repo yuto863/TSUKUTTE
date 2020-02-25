@@ -15,7 +15,8 @@ class CommentsController < ApplicationController
       # flash[:notice] = '投稿が完了しました'
       redirect_to post_path(@comment.post.id),success: '投稿が完了しました'
     else
-      flash[:notice] = '投稿に失敗しました'
+      # flash.now[:danger] = '投稿に失敗しました'
+      flash.now[:danger] = "投稿に失敗しました"
       redirect_to post_path(@comment.post.id)
     end
   end
