@@ -76,7 +76,7 @@
           <div class="post-comment">
             <%= shape_create_time(comment.created_at) %>
           </div>
-          <br>
+          <hr>
         <% end %>
       <% else%>
         <p>まだコメントがありません</p>
@@ -88,13 +88,22 @@
     
 
     
-    <%= form_with model: [@post, @comment], local: true do |f| %>
-      <%= f.hidden_field :post_id, {value: @post.id } %>
+      <%= form_with model: [@post, @comment], local: true do |f| %>
       
+      <div class="form">
+        <div class="form-body">
       
-      
-      <%= f.text_area :content %>
-      <%= f.submit '投稿' %>
+        <%= f.hidden_field :post_id, {value: @post.id } %>
+        
+        
+        
+        <%= f.text_area :content %>
+        <%= f.submit '投稿' %>
+        
+        
+        </div>
+      </div>
+        
     <% end %>
     
 

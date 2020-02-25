@@ -256,7 +256,7 @@ background-color:#ADD8E6;
 }
 
 
-/* フラッシュ ================================ */
+
 .flash {
   padding: 10px 0;
   color: white;
@@ -275,13 +275,77 @@ background-color:#ADD8E6;
   
 }
 
+// #sbox1{
+// max-width:300px;
+// height:50px;
+// border-radius:2px;
+// outline:0;
+// margin-bottom:40px;
+// background:#eee;	
+// }
+
+
+//検索フォーム
+// #form2{
+// position:relative;
+// max-width:300px;	
+// margin-bottom:20px;
+// }
+
+// #sbox2{
+// height:50px;
+// padding: 10px; 
+// position:absolute; 
+// left:0;
+// top:0; 
+// border-radius:2px;
+// outline:0;
+// background:#eee;	
+// }
+// #sbtn2{
+// height:50px;
+// position:absolute; 
+// left:255px;/*アイコン左右の位置調整*/
+// top:0;
+// background:none;
+// color:#666;
+// border:none;
+// font-size:20px;/*アイコンサイズ*/
+// }
+// #sbtn5:hover{
+// color:#7fbfff;
+// }
+
 #sbox1{
 max-width:300px;
 height:50px;
 border-radius:2px;
 outline:0;
 margin-bottom:40px;
-background:#eee;	
+
+// background-color:#232729;
+// background-color:#2d2e33;
+background:#eee;
+// background:2D31332D3133;
+// background:2f3437;
+
+// background:#555555;
+// background:white;
+
+// font-family:FontAwesome;
+
+// font-family: "Font Awesome 5 Free";
+// font-weight: 900;
+  
 }
 
-/*子階層以降共通*/
+
+
+// .font-awesome {
+//     font-family: FontAwesome Free;
+//     font-style: normal;
+//     font-weight: normal;
+//     text-decoration: inherit;
+// }
+
+
