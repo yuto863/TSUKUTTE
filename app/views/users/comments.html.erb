@@ -16,7 +16,7 @@
             退会したユーザー
         <% end %>
         
-        の投稿 <%= post.title%>にコメント
+        の投稿 <%= link_to post.title,post_path %>にコメント
         <%= shape_create_time(comment.created_at) %>
         </div>
         <br>
