@@ -43,18 +43,27 @@
       
       <br>
       <br>
-      <td id="like-<%= @post.id %>">
-        <%= render partial: "like", locals: { post: @post } %>
+        <!--いいね数の表示、ログインしてたらログインボタンでクリックできるようにする（非同期通信）-->
+        <% if logged_in? %>
+          <td id="like-<%= @post.id %>">
+          <%= render partial: "like", locals: { post: @post } %>
+        <% else %>
+          <i class="material-icons">
+            favorite
+          </i>
+          <%= Like.where(post_id: @post.id).count %>
+        <% end %>
       </td>
       
       
-      
-      <% if @post.user_id == current_user.id %>
-        <div class="post-menus">
-          <%= link_to "編集",edit_post_path %>
-          <%= link_to "削除",post_path(@post), method: :delete, data: { confirm: '本当に削除してもよろしいですか？', cancel: 'キャンセル', commit: '削除する'}, title: '削除確認' %>
-        </div>
-      <% end %>
+      <% if logged_in?%>
+        <% if @post.user_id == current_user.id %>
+          <div class="post-menus">
+            <%= link_to "編集",edit_post_path %>
+            <%= link_to "削除",post_path(@post), method: :delete, data: { confirm: '本当に削除してもよろしいですか？', cancel: 'キャンセル', commit: '削除する'}, title: '削除確認' %>
+          </div>
+        <% end %>
+      <%end%>
       
       
       
@@ -87,18 +96,14 @@
       
     </div>
     
-    <h3>コメントする</h3>
-    
-
-    
+    <% if logged_in? %>
+      <h3>コメントする</h3>
       <%= form_with model: [@post, @comment], local: true do |f| %>
       
       <div class="form">
         <div class="form-body">
       
         <%= f.hidden_field :post_id, {value: @post.id } %>
-        
-        
         
         <%= f.text_area :content %>
         <%= f.submit '投稿' %>
@@ -107,8 +112,8 @@
         </div>
       </div>
         
+      <% end %>
     <% end %>
-    
 
   </div>
 </div>

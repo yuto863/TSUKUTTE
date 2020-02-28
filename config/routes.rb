@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   get 'sessions/new'
   # get 'users/index'
   # get 'posts/index'
-  root 'home#top'
+  
+  root 'posts#posts_trend_day'
   
   get 'users/:id/likes', to: 'users#likes'
   get 'users/:id/comments', to: 'users#comments'

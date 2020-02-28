@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only:[:edit,:update]
-  before_action :correct_user,   only:[:edit,:update]
+  before_action :logged_in_user, only:[:edit,:update,:destroy_confirm,:destroy]
+  before_action :correct_user,   only:[:edit,:update,:destroy_confirm,:destroy]
   
   # def index
   #   @users = User.all.order(created_at: :desc)
@@ -76,7 +76,8 @@ class UsersController < ApplicationController
       unless logged_in?
       store_location
       # flash[:notice] = "ログインをしてください"
-      redirect_to login_path,success: 'ログインしてください'
+      redirect_to login_path
+      flash[:danger]="ログインしてください"
       end
     end
     

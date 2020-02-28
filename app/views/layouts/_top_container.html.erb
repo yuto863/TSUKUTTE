@@ -1,7 +1,7 @@
 <div class="top-container">
     <ul>
-    	<li class="<%= 'index-header-selecting' if current_page?(posts_daily_path) or current_page?(posts_weekly_path) or current_page?(posts_monthly_path)%>">
-    	  <%= link_to  posts_daily_path do %>
+    	<li class="<%= 'index-header-selecting' if current_page?(root_path) or current_page?(posts_weekly_path) or current_page?(posts_monthly_path) %>">
+    	  <%= link_to  root_path do %>
           <i class="material-icons">trending_up</i> トレンド
         <% end %>
     	</li>

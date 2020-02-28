@@ -6,6 +6,8 @@
 <ul class="header-menus">
   
   
+  
+  
   <% if logged_in? %>
   
     
@@ -55,6 +57,17 @@
     </li>            
 
   <% else %>
+    
+    <li>
+      <%= form_with(url: posts_search_path, method: :get, local: true) do |f| %>
+        <%= f.text_field :search, placeholder:"\uF002 キーワードを入力",id:"sbox1",class:'fa' %>
+        
+        
+      <% end %>
+
+      
+    </li>
+    
     <li>
       <%= link_to "新規登録", new_user_path %>
     </li>
