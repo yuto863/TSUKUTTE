@@ -44,8 +44,8 @@
       <br>
       <br>
         <!--いいね数の表示、ログインしてたらログインボタンでクリックできるようにする（非同期通信）-->
+      <div id="like-<%= @post.id %>">
         <% if logged_in? %>
-          <td id="like-<%= @post.id %>">
           <%= render partial: "like", locals: { post: @post } %>
         <% else %>
           <i class="material-icons">
@@ -53,8 +53,7 @@
           </i>
           <%= Like.where(post_id: @post.id).count %>
         <% end %>
-      </td>
-      
+      </div>
       
       <% if logged_in?%>
         <% if @post.user_id == current_user.id %>
@@ -96,8 +95,10 @@
       
     </div>
     
+    
     <% if logged_in? %>
       <h3>コメントする</h3>
+      <br>
       <%= form_with model: [@post, @comment], local: true do |f| %>
       
       <div class="form">

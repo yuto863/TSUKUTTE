@@ -40,11 +40,6 @@ form input[type="submit"] {
 // ここ
 body {
   // color:#ADD8E6;
-  
-  // position: relative;
-  // padding-bottom: 120px;/*←footerの高さ*/
-  // box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
-  
   color: #2d3133;
   // background-color: #3ecdc6;
   // background-color: #0066CC;
@@ -52,11 +47,6 @@ body {
   
   // background-color:#6FB98F;
   background-color:#94AFC5;
-  
-  //footerのためこれを追加
-  padding: 0;
-  height: 100%;
-  
   
   margin: 0;
   min-height: 1vh;
@@ -361,16 +351,3 @@ background:#eee;
 // }
 
 
-
-footer{
-  width: 100%;
-  background-color: #94AFC5;
-  color: #fff;
-  text-align: center;
-  padding: 10px 0;
-  
-  // height: 10px;
-
-  position: absolute;/*←絶対位置*/
-  bottom: 0; /*下に固定*/
-}

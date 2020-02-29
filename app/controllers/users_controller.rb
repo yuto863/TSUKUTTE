@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only:[:edit,:update,:destroy_confirm,:destroy]
-  before_action :correct_user,   only:[:edit,:update,:destroy_confirm,:destroy]
+  before_action :correct_user,   only:[:edit,:update]
   
   # def index
   #   @users = User.all.order(created_at: :desc)
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
     @user.destroy
     # flash[:notice] = 'ユーザーを削除しました'
-    redirect_to root_path,info: 'ユーザー退会を完了いたしました。またのご利用をお待ちしております。'
+    redirect_to root_path,info: 'ユーザー退会を完了いたしました。またのご利用をお待ちしております'
   end
   
   private
