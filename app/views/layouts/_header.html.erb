@@ -6,8 +6,6 @@
 <ul class="header-menus">
   
   
-  
-  
   <% if logged_in? %>
   
     
@@ -49,8 +47,8 @@
           <% end %>
           
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <%= link_to "マイページ", "/users/#{current_user.id}" ,class:"dropdown-item"%>
-            <%= link_to "編集", "/users/#{current_user.id}/edit" ,class: "dropdown-item"%>
+            <%= link_to "マイページ", user_path(current_user) ,class:"dropdown-item"%>
+            <%= link_to "編集", edit_user_path(current_user),class: "dropdown-item"%>
             <%= link_to 'ログアウト', logout_path,method: :delete , data: { confirm: 'ログアウトしてよろしいですか？', cancel: 'キャンセル', commit: 'ログアウトする'}, title: 'ログアウト確認' ,class: "dropdown-item" %>
           </div>
           

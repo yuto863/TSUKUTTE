@@ -1,25 +1,22 @@
-      
       <%= render partial: "/users/user_image"%>
       
       <h2><%= @user.name %></h2>
       <br>
       【紹介文】
       <!--エスケープ処理でhttp,httpを許可している-->
-      <% if @user.profile %>
-        <p><%= sanitize text_url_to_link(@user.profile), tags: %w(b a), attributes: %w(href) %></p>
-      <% end %>
       
-      
-      
-      
-
+      <hr>
+        <% if @user.profile %>
+          <p><%= sanitize text_url_to_link(@user.profile), tags: %w(b a), attributes: %w(href) %></p>
+        <% end %>
+      <hr>
       
       <ul class="user-menus">
   
-        <li class="<%= 'user-header-selecting' if current_page?(user_path) %>"><%= link_to "投稿履歴",user_path %></li>
-    
-        <li class="<%= 'user-header-selecting' if current_page?("/users/#{@user.id}/likes") %>"><%= link_to "いいね履歴","/users/#{@user.id}/likes" %></li>
+        <li class="<%= 'user-header-selecting' if current_page?(user_path(@user)) %>"><%= link_to "投稿履歴",user_path(@user) %></li>
         
-        <li class="<%= 'user-header-selecting' if current_page?("/users/#{@user.id}/comments") %>"><%= link_to "コメント履歴","/users/#{@user.id}/comments" %></li>
+        <li class="<%= 'user-header-selecting' if current_page?(user_likes_path(@user)) %>"><%= link_to "いいね履歴",user_likes_path(@user) %></li>
+        
+        <li class="<%= 'user-header-selecting' if current_page?(user_comments_path(@user)) %>"><%= link_to "コメント履歴",user_comments_path(@user) %></li>
         
       </ul>

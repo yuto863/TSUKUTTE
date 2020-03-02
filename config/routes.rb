@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   
   root 'posts#posts_trend_day'
   
-  get 'users/:id/likes', to: 'users#likes'
-  get 'users/:id/comments', to: 'users#comments'
+  get ':name/likes', to: 'users#likes' , as: 'user_likes'
+  get ':name/comments', to: 'users#comments', as: 'user_comments'
   
   get 'posts/search',to: 'posts#search'
   
@@ -29,9 +29,9 @@ Rails.application.routes.draw do
     resources :comments
   end
   
-  resources :users
+  resources :users,only:[:new,:create]
   # usernameにしたい
-  # resources :users, path: '/', only: [:show, :edit, :update, :destroy]
+  resources :users, path: '/', only: [:show, :edit, :update, :destroy]
   
   
   post 'likes/:post_id/create',to: 'likes#create'

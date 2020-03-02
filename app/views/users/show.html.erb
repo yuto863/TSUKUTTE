@@ -1,7 +1,7 @@
 <div class="main user-show">
   <div class="container">
     <div class="user">
-      <%= render partial: "profile"%>
+      <%= render partial: "profile", locals: { user: @user } %>
       
       <% @posts = @user.posts.all.order(updated_at: :desc) %>
       <% @posts.each do |post| %>

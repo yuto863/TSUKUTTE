@@ -7,9 +7,9 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   
   # usernameにしたい
-  # def to_param
-  #   name
-  # end
+  def to_param
+    name
+  end
   
 
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,12}+\z/i

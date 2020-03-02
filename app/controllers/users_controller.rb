@@ -9,7 +9,12 @@ class UsersController < ApplicationController
   def show
     # usernameにしたい
     # @user = User.find_by(name: params[:id])
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    
+    #アカウントが存在しなかったら、root_pathに飛ばす
+    
+    @user = User.find_by(name: params[:id])
+    
   end
   
   def new
@@ -29,11 +34,14 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    @user = User.find_by(name: params[:id])
   end
   
   def update
-    @user = User.find_by(id: params[:id])
+    # @user = User.find_by(id: params[:id])
+    # usernameにしたい
+    @user = User.find_by(name: params[:id])
     if @user.update(user_params)
       # flash[:notice] = "ユーザーの編集が完了しました"
       redirect_to user_path,success: 'ユーザーの編集が完了しました'
@@ -44,12 +52,14 @@ class UsersController < ApplicationController
   end
   
   def likes
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    @user = User.find_by(name: params[:name])
     @likes = Like.where(user_id: @user.id).order(updated_at: :desc)
   end
   
   def comments
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    @user = User.find_by(name: params[:name])
     @comments = Comment.where(user_id: @user.id).order(updated_at: :desc)
   end
   
@@ -82,7 +92,8 @@ class UsersController < ApplicationController
     end
     
     def correct_user
-      @user = User.find_by(id: params[:id])
+      # @user = User.find_by(id: params[:id])
+      @user = User.find_by(name: params[:id])
       redirect_to root_path unless current_user?(@user)
     end
 

@@ -48,10 +48,12 @@
         <% if logged_in? %>
           <%= render partial: "like", locals: { post: @post } %>
         <% else %>
-          <i class="material-icons">
-            favorite
-          </i>
-          <%= Like.where(post_id: @post.id).count %>
+          <div class="post-detail">
+            <i class="material-icons">
+              favorite
+            </i>
+            <%= Like.where(post_id: @post.id).count %>
+          </div>
         <% end %>
       </div>
       
@@ -91,6 +93,7 @@
         <% end %>
       <% else%>
         <p>まだコメントがありません</p>
+        <br>
       <% end %>
       
     </div>
